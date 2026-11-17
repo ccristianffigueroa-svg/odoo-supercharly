@@ -1,0 +1,416 @@
+
+<templates id="template" xml:space="preserve">
+
+    <t t-name="custom_supercharly_pos.MermaDialog">
+        <Dialog title="'Registrar Merma'" size="'lg'">
+
+            <div class="o_supercharly_merma_dialog">
+
+                <!-- Cargando -->
+                <t t-if="this.cargando()">
+                    <div class="text-center p-4">
+                        <i class="fa fa-spinner fa-spin fa-2x"/>
+                        <p class="mt-2">
+                            Cargando productos...
+                        </p>
+                    </div>
+                </t>
+
+                <t t-else="">
+
+                    <!-- Mensajes -->
+                    <t t-if="this.error()">
+                        <div class="alert alert-danger" role="alert">
+                            <i class="fa fa-exclamation-circle me-2"/>
+                            <t t-esc="this.error()"/>
+                        </div>
+                    </t>
+
+                    <t t-if="this.mensaje()">
+                        <div class="alert alert-success" role="alert">
+                            <t t-esc="this.mensaje()"/>
+                        </div>
+                    </t>
+
+                    <!-- BUSCADOR Y SELECCIÓN -->
+                    <div class="card mb-3">
+
+                        <div class="card-header">
+                            <strong>
+                                <i class="fa fa-search me-2"/>
+                                Buscar producto
+                            </strong>
+                        </div>
+
+                        <div class="card-body">
+
+                            <!-- Buscador -->
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Nombre, código de barras o referencia interna
+                                </label>
+
+                                <input
+                                    type="search"
+                                    class="form-control"
+                                    placeholder="Escribe el nombre o escanea el código de barras..."
+                                    t-att-value="this.buscar()"
+                                    t-on-input="(ev) => this.buscar.set(ev.target.value)"
+                                />
+
+                                <small class="text-muted">
+                                    <t t-esc="this.productosFiltrados.length"/>
+                                    resultados encontrados
+                                </small>
+
+                            </div>
+
+                            <!-- Selector de productos -->
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Seleccionar producto
+                                </label>
+
+                                <select
+                                    class="form-select"
+                                    t-att-value="this.productoId()"
+                                    t-on-change="this.seleccionarProducto"
+                                >
+
+                                    <option value="">
+                                        Seleccionar producto...
+                                    </option>
+
+                                    <t t-foreach="this.productosFiltrados"
+                                       t-as="producto"
+                                       t-key="producto.id">
+
+                                        <option t-att-value="producto.id">
+
+                                            <t t-esc="producto.name"/>
+
+                                            <t t-if="producto.barcode">
+                                                | Código:
+                                                <t t-esc="producto.barcode"/>
+                                            </t>
+
+                                            <t t-if="producto.default_code">
+                                                | Ref:
+                                                <t t-esc="producto.default_code"/>
+                                            </t>
+
+                                            | Stock:
+                                            <t t-esc="producto.quantity"/>
+
+                                        </option>
+
+                                    </t>
+
+                                </select>
+
+                                <t t-if="this.buscar() and !this.productosFiltrados.length">
+                                    <div class="alert alert-warning mt-2 mb-0">
+                                        No se encontraron productos con ese nombre,
+                                        código de barras o referencia.
+                                    </div>
+                                </t>
+
+                            </div>
+
+                            <!-- Información del producto -->
+                            <t t-if="this.productoSeleccionado">
+
+                                <div class="alert alert-info">
+
+                                    <h6 class="mb-2">
+                                        <strong>
+                                            <t t-esc="this.productoSeleccionado.name"/>
+                                        </strong>
+                                    </h6>
+
+                                    <div>
+                                        Código de barras:
+                                        <strong>
+                                            <t t-esc="this.productoSeleccionado.barcode || 'Sin código'"/>
+                                        </strong>
+                                    </div>
+
+                                    <div>
+                                        Referencia interna:
+                                        <strong>
+                                            <t t-esc="this.productoSeleccionado.default_code || 'Sin referencia'"/>
+                                        </strong>
+                                    </div>
+
+                                    <div>
+                                        Stock disponible:
+                                        <strong>
+                                            <t t-esc="this.productoSeleccionado.quantity"/>
+                                            <t t-esc="this.productoSeleccionado.uom"/>
+                                        </strong>
+                                    </div>
+
+                                </div>
+
+                                <!-- Selección de lote -->
+                                <t t-if="this.productoSeleccionado.tracking === 'lot'">
+
+                                    <div class="mb-3">
+
+                                        <label class="form-label">
+                                            Seleccionar lote
+                                        </label>
+
+                                        <select
+                                            class="form-select"
+                                            t-att-value="this.lotId()"
+                                            t-on-change="(ev) => this.lotId.set(ev.target.value)"
+                                        >
+
+                                            <option value="">
+                                                Seleccionar lote...
+                                            </option>
+
+                                            <t t-foreach="this.lotes()"
+                                               t-as="lote"
+                                               t-key="lote.id">
+
+                                                <option t-att-value="lote.id">
+                                                    <t t-esc="lote.name"/>
+                                                    | Stock:
+                                                    <t t-esc="lote.quantity"/>
+                                                </option>
+
+                                            </t>
+
+                                        </select>
+
+                                        <t t-if="!this.lotes().length">
+                                            <small class="text-danger">
+                                                No existen lotes con stock disponible.
+                                            </small>
+                                        </t>
+
+                                    </div>
+
+                                </t>
+
+                                <!-- Cantidad -->
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Cantidad a retirar
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        min="0.01"
+                                        step="0.01"
+                                        t-att-max="this.productoSeleccionado.quantity"
+                                        t-att-value="this.cantidad()"
+                                        t-on-input="this.actualizarCantidad"
+                                    />
+
+                                </div>
+
+                                <!-- Agregar producto -->
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    t-on-click="this.agregarProducto"
+                                >
+                                    <i class="fa fa-plus me-2"/>
+                                    Agregar producto
+                                </button>
+
+                            </t>
+
+                        </div>
+                    </div>
+
+                    <!-- LISTA DE MERMAS -->
+                    <div class="card mb-3">
+
+                        <div class="card-header d-flex justify-content-between align-items-center">
+
+                            <strong>
+                                <i class="fa fa-list me-2"/>
+                                Productos a registrar como merma
+                            </strong>
+
+                            <span class="badge bg-primary">
+                                <t t-esc="this.lineas().length"/>
+                                productos
+                            </span>
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <t t-if="this.lineas().length">
+
+                                <div class="table-responsive">
+
+                                    <table class="table table-striped table-hover">
+
+                                        <thead>
+                                            <tr>
+                                                <th>Producto</th>
+                                                <th>Código</th>
+                                                <th>Lote</th>
+                                                <th class="text-center">
+                                                    Cantidad
+                                                </th>
+                                                <th class="text-center">
+                                                    Acción
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                            <t t-foreach="this.lineas()"
+                                               t-as="linea"
+                                               t-key="linea.key">
+
+                                                <tr>
+
+                                                    <td>
+                                                        <strong>
+                                                            <t t-esc="linea.name"/>
+                                                        </strong>
+
+                                                        <t t-if="linea.default_code">
+                                                            <br/>
+                                                            <small class="text-muted">
+                                                                Ref:
+                                                                <t t-esc="linea.default_code"/>
+                                                            </small>
+                                                        </t>
+                                                    </td>
+
+                                                    <td>
+                                                        <t t-esc="linea.barcode || '-'"/>
+                                                    </td>
+
+                                                    <td>
+                                                        <t t-esc="linea.lot_name || 'Sin lote'"/>
+                                                    </td>
+
+                                                    <td class="text-center">
+                                                        <strong>
+                                                            <t t-esc="linea.quantity"/>
+                                                        </strong>
+                                                    </td>
+
+                                                    <td class="text-center">
+
+                                                        <button
+                                                            type="button"
+                                                            class="btn btn-sm btn-outline-danger"
+                                                            t-att-disabled="this.guardando()"
+                                                            t-on-click="() => this.eliminarLinea(linea.key)"
+                                                        >
+                                                            <i class="fa fa-trash"/>
+                                                        </button>
+
+                                                    </td>
+
+                                                </tr>
+
+                                            </t>
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+                                <!-- RESUMEN -->
+                                <div class="alert alert-secondary mb-0">
+
+                                    <div class="d-flex justify-content-between">
+                                        <strong>
+                                            Total de productos:
+                                        </strong>
+
+                                        <span>
+                                            <t t-esc="this.lineas().length"/>
+                                        </span>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between mt-2">
+                                        <strong>
+                                            Total de unidades:
+                                        </strong>
+
+                                        <span>
+                                            <t t-esc="this.totalUnidades"/>
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                            </t>
+
+                            <t t-else="">
+
+                                <div class="text-center text-muted p-4">
+
+                                    <i class="fa fa-shopping-basket fa-2x mb-2"/>
+
+                                    <p class="mb-0">
+                                        Todavía no has agregado productos.
+                                    </p>
+
+                                </div>
+
+                            </t>
+
+                        </div>
+                    </div>
+
+                </t>
+
+            </div>
+
+            <!-- BOTONES INFERIORES -->
+            <t t-set-slot="footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    t-att-disabled="this.guardando()"
+                    t-on-click="this.cerrarDialogo"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-danger"
+                    t-att-disabled="this.guardando() || !this.lineas().length"
+                    t-on-click="this.registrarMerma"
+                >
+
+                    <t t-if="this.guardando()">
+                        <i class="fa fa-spinner fa-spin me-2"/>
+                        Registrando...
+                    </t>
+
+                    <t t-else="">
+                        <i class="fa fa-trash me-2"/>
+                        Registrar todas las mermas
+                    </t>
+
+                </button>
+
+            </t>
+
+        </Dialog>
+    </t>
+
+</templates>

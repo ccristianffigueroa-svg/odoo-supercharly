@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-inherit="point_of_sale.BurgerMenuDialog"
+       t-inherit-mode="extension">
+
+        <xpath expr="//div[contains(@class, 'o_pos_burger_menu_buttons')]"
+               position="inside">
+
+            <t t-call="point_of_sale.BurgerDialogMenuButton"
+               dataIcon="'delete'"
+               onClick="() => this.abrirMerma()"
+               btnLabel="'Registrar Merma'"
+               btnClasses="'btn-danger'"/>
+
+        </xpath>
+
+    </t>
+
+</templates>

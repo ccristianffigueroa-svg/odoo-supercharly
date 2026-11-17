@@ -1,0 +1,130 @@
+<odoo>
+
+    <!-- Búsqueda y filtros de alertas de vencimiento -->
+    <record id="view_supercharly_expiration_alert_search"
+            model="ir.ui.view">
+
+        <field name="name">
+            supercharly.expiration.alert.search
+        </field>
+
+        <field name="model">supercharly.expiration.alert</field>
+
+        <field name="arch" type="xml">
+
+            <search string="Buscar alertas de vencimiento">
+
+                <field name="product_id"/>
+                <field name="lot_id"/>
+
+                <filter name="filter_perishable"
+                        string="Productos perecibles"
+                        domain="[('product_id.product_tmpl_id.supercharly_perishability', '=', 'perishable')]"/>
+
+                <filter name="filter_non_perishable"
+                        string="Productos no perecibles"
+                        domain="[('product_id.product_tmpl_id.supercharly_perishability', '=', 'non_perishable')]"/>
+
+                <separator/>
+
+                <filter name="filter_expired"
+                        string="Vencidos"
+                        domain="[('status', '=', 'expired')]"/>
+
+                <filter name="filter_critical"
+                        string="Críticos"
+                        domain="[('status', '=', 'critical')]"/>
+
+                <filter name="filter_warning"
+                        string="Próximos a vencer"
+                        domain="[('status', '=', 'warning')]"/>
+
+                <filter name="filter_attention"
+                        string="En observación"
+                        domain="[('status', '=', 'attention')]"/>
+
+                <filter name="filter_normal"
+                        string="Normales"
+                        domain="[('status', '=', 'normal')]"/>
+
+            </search>
+
+        </field>
+    </record>
+
+    <!-- Acción de alertas de vencimiento -->
+    <record id="action_supercharly_expiration_alert"
+            model="ir.actions.act_window">
+
+        <field name="name">Alertas de Vencimiento</field>
+        <field name="res_model">supercharly.expiration.alert</field>
+        <field name="view_mode">list</field>
+
+        <field name="search_view_id"
+               ref="view_supercharly_expiration_alert_search"/>
+
+    </record>
+
+    <!-- Vista de lista -->
+    <record id="view_supercharly_expiration_alert_list"
+            model="ir.ui.view">
+
+        <field name="name">
+            supercharly.expiration.alert.list
+        </field>
+
+        <field name="model">supercharly.expiration.alert</field>
+
+        <field name="arch" type="xml">
+
+            <list string="Alertas de Vencimiento"
+                  create="false"
+                  delete="false">
+
+                <header>
+
+                    <button name="generar_alertas"
+                            type="object"
+                            string="Actualizar alertas"
+                            class="btn-primary"
+                            display="always"/>
+
+                </header>
+
+                <field name="product_id"
+                       string="Producto"/>
+
+                <field name="lot_id"
+                       string="Número de lote"/>
+
+                <field name="expiration_date"
+                       string="Fecha de vencimiento"/>
+
+                <field name="available_qty"
+                       string="Cantidad disponible"/>
+
+                <field name="days_remaining"
+                       string="Días restantes"/>
+
+                <field name="status"
+                       string="Estado"
+                       widget="badge"
+                       decoration-danger="status == 'expired'"
+                       decoration-warning="status == 'critical'"
+                       decoration-info="status == 'warning'"
+                       decoration-muted="status == 'attention'"
+                       decoration-success="status == 'normal'"/>
+
+            </list>
+
+        </field>
+    </record>
+
+    <!-- Menú dentro de Inventario -->
+    <menuitem id="menu_supercharly_expiration_alert"
+              name="Alertas de Vencimiento"
+              parent="stock.menu_stock_root"
+              action="action_supercharly_expiration_alert"
+              sequence="91"/>
+
+</odoo>

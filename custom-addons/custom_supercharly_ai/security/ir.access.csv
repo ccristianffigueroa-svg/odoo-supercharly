@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_supercharly_demand_forecast_stock_user,supercharly.demand.forecast stock user,supercharly.demand.forecast,stock.group_stock_user,crud,
+access_supercharly_expiration_alert_stock_user,supercharly.expiration.alert stock user,supercharly.expiration.alert,stock.group_stock_user,crud,
+access_supercharly_replenishment_purchase_user,supercharly.replenishment purchase user,supercharly.replenishment,purchase.group_purchase_user,crud,

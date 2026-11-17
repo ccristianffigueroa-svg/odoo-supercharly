@@ -1,0 +1,414 @@
+
+<odoo>
+
+    <!-- ================================================= -->
+    <!-- VISTA DE BUSQUEDA Y FILTROS -->
+    <!-- ================================================= -->
+
+    <record id="view_supercharly_replenishment_search" model="ir.ui.view">
+        <field name="name">supercharly.replenishment.search</field>
+        <field name="model">supercharly.replenishment</field>
+        <field name="arch" type="xml">
+
+            <search string="Buscar reposiciones">
+
+                <field name="product_id"/>
+                <field name="supplier_id"/>
+                <field name="purchase_id"/>
+
+                <separator/>
+
+                <filter name="filter_active"
+                        string="Reposiciones activas"
+                        domain="[('status', '!=', 'received')]"/>
+
+                <filter name="filter_pending"
+                        string="Pendientes"
+                        domain="[('status', '=', 'pending')]"/>
+
+                <filter name="filter_no_supplier"
+                        string="Sin proveedor"
+                        domain="[('status', '=', 'no_supplier')]"/>
+
+                <filter name="filter_rfq_created"
+                        string="Solicitud preparada"
+                        domain="[('status', '=', 'rfq_created')]"/>
+
+                <filter name="filter_confirmed"
+                        string="Compras confirmadas"
+                        domain="[('status', '=', 'confirmed')]"/>
+
+                <filter name="filter_received"
+                        string="Reposiciones recibidas"
+                        domain="[('status', '=', 'received')]"/>
+
+                <filter name="filter_not_needed"
+                        string="Stock suficiente"
+                        domain="[('status', '=', 'not_needed')]"/>
+
+                <group expand="0" string="Agrupar por">
+
+                    <filter name="group_supplier"
+                            string="Proveedor"
+                            context="{'group_by': 'supplier_id'}"/>
+
+                    <filter name="group_status"
+                            string="Estado"
+                            context="{'group_by': 'status'}"/>
+
+                </group>
+
+            </search>
+
+        </field>
+    </record>
+
+
+    <!-- ================================================= -->
+    <!-- ACCION PRINCIPAL: REPOSICION INTELIGENTE -->
+    <!-- ================================================= -->
+
+    <record id="action_supercharly_replenishment"
+            model="ir.actions.act_window">
+
+        <field name="name">Reposicion Inteligente</field>
+
+        <field name="res_model">supercharly.replenishment</field>
+
+        <field name="view_mode">list,form</field>
+
+        <field name="search_view_id"
+               ref="view_supercharly_replenishment_search"/>
+
+        <!-- Excluir productos recibidos -->
+        <field name="domain">[('status', '!=', 'received')]</field>
+
+    </record>
+
+
+
+
+    <!-- ================================================= -->
+    <!-- VISTA DE LISTA: REPOSICION INTELIGENTE -->
+    <!-- ================================================= -->
+
+    <record id="view_supercharly_replenishment_list"
+            model="ir.ui.view">
+
+        <field name="name">supercharly.replenishment.list</field>
+
+        <field name="model">supercharly.replenishment</field>
+
+        <field name="arch" type="xml">
+
+            <list string="Reposicion Inteligente"
+                  create="false"
+                  delete="false"
+                  editable="bottom">
+
+                <header>
+
+                    <button name="actualizar_reposicion"
+                            type="object"
+                            string="Actualizar reposicion"
+                            class="btn-primary"
+                            display="always"/>
+
+                    <button name="generar_solicitud"
+                            type="object"
+                            string="Generar solicitudes de compra"
+                            class="btn-secondary"
+                            display="always"/>
+
+                </header>
+
+                <!-- PRODUCTO -->
+
+                <field name="product_id"
+                       string="Producto"
+                       readonly="1"/>
+
+                <!-- INVENTARIO -->
+
+                <field name="current_stock"
+                       string="Stock actual"
+                       readonly="1"/>
+
+                <field name="forecast_qty"
+                       string="Demanda estimada"
+                       readonly="1"/>
+
+                <field name="suggested_qty"
+                       string="Cantidad sugerida"
+                       readonly="1"/>
+
+                <!-- CANTIDAD A COMPRAR -->
+
+                <field name="purchase_qty"
+                       string="Cantidad a comprar"
+                       readonly="status == 'rfq_created' or status == 'confirmed' or status == 'received'"/>
+
+                <!-- PROVEEDOR -->
+
+                <field name="supplier_id"
+                       string="Proveedor"
+                       readonly="1"/>
+
+                <field name="unit_price"
+                       string="Precio unitario"
+                       readonly="1"/>
+
+                <field name="currency_id"
+                       column_invisible="1"/>
+
+                <!-- ESTADO -->
+
+                <field name="status"
+                       string="Estado"
+                       widget="badge"
+                       decoration-warning="status == 'pending'"
+                       decoration-danger="status == 'no_supplier'"
+                       decoration-info="status == 'rfq_created'"
+                       decoration-primary="status == 'confirmed'"
+                       decoration-success="status == 'received'"
+                       decoration-muted="status == 'not_needed'"/>
+
+                <!-- SOLICITUD DE COMPRA -->
+
+                <field name="purchase_id"
+                       string="Solicitud de compra"
+                       optional="hide"/>
+
+                <field name="last_updated"
+                       string="Ultima actualizacion"
+                       optional="hide"/>
+
+            </list>
+
+        </field>
+    </record>
+
+
+    <!-- ================================================= -->
+    <!-- VISTA DE LISTA: HISTORIAL -->
+    <!-- ================================================= -->
+
+    <record id="view_supercharly_replenishment_history_list"
+            model="ir.ui.view">
+
+        <field name="name">supercharly.replenishment.history.list</field>
+
+        <field name="model">supercharly.replenishment</field>
+
+        <field name="arch" type="xml">
+
+            <list string="Historial de Reposiciones"
+                  create="false"
+                  edit="false"
+                  delete="false">
+
+                <field name="product_id"
+                       string="Producto"/>
+
+                <field name="current_stock"
+                       string="Stock registrado"/>
+
+                <field name="forecast_qty"
+                       string="Demanda estimada"/>
+
+                <field name="suggested_qty"
+                       string="Cantidad sugerida"/>
+
+                <field name="purchase_qty"
+                       string="Cantidad comprada"/>
+
+                <field name="supplier_id"
+                       string="Proveedor"/>
+
+                <field name="unit_price"
+                       string="Precio unitario"/>
+
+                <field name="currency_id"
+                       column_invisible="1"/>
+
+                <field name="purchase_id"
+                       string="Compra realizada"/>
+
+                <field name="status"
+                       string="Estado"
+                       widget="badge"
+                       decoration-success="status == 'received'"/>
+
+                <field name="last_updated"
+                       string="Ultima actualizacion"/>
+
+            </list>
+
+        </field>
+    </record>
+
+
+    <!-- ================================================= -->
+    <!-- ACCION: HISTORIAL DE REPOSICIONES -->
+    <!-- ================================================= -->
+
+    <record id="action_supercharly_replenishment_history"
+            model="ir.actions.act_window">
+
+        <field name="name">Historial de Reposiciones</field>
+
+        <field name="res_model">supercharly.replenishment</field>
+
+        <field name="view_mode">list</field>
+
+        <field name="search_view_id"
+               ref="view_supercharly_replenishment_search"/>
+
+        <!-- Mostrar solamente productos recibidos -->
+        <field name="domain">[('status', '=', 'received')]</field>
+
+        <!-- Utilizar una lista exclusiva de historial -->
+        <field name="view_ids"
+               eval="[(5, 0, 0), (0, 0, {
+                   'view_mode': 'list',
+                   'view_id': ref('view_supercharly_replenishment_history_list')
+               })]"/>
+
+    </record>
+
+    <!-- ================================================= -->
+    <!-- VISTA DE FORMULARIO -->
+    <!-- ================================================= -->
+
+    <record id="view_supercharly_replenishment_form"
+            model="ir.ui.view">
+
+        <field name="name">supercharly.replenishment.form</field>
+
+        <field name="model">supercharly.replenishment</field>
+
+        <field name="arch" type="xml">
+
+            <form string="Reposicion Inteligente"
+                  create="false"
+                  delete="false">
+
+                <header>
+
+                    <button name="generar_solicitud"
+                            type="object"
+                            string="Generar solicitud de compra"
+                            class="btn-secondary"
+                            invisible="status == 'rfq_created' or status == 'confirmed' or status == 'received'"/>
+
+                    <field name="status"
+                           widget="statusbar"
+                           statusbar_visible="pending,rfq_created,confirmed,received"/>
+
+                </header>
+
+                <sheet>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="product_id" readonly="1"/>
+                        </h1>
+                    </div>
+
+                    <group>
+
+                        <group string="Informacion de inventario">
+
+                            <field name="current_stock"
+                                   string="Stock actual"
+                                   readonly="1"/>
+
+                            <field name="forecast_qty"
+                                   string="Demanda estimada"
+                                   readonly="1"/>
+
+                            <field name="suggested_qty"
+                                   string="Cantidad sugerida"
+                                   readonly="1"/>
+
+                            <field name="purchase_qty"
+                                   string="Cantidad a comprar"
+                                   readonly="status == 'rfq_created' or status == 'confirmed' or status == 'received'"/>
+
+                        </group>
+
+                        <group string="Informacion del proveedor">
+
+                            <field name="supplier_id"
+                                   string="Proveedor"
+                                   readonly="1"/>
+
+                            <field name="supplierinfo_id"
+                                   string="Informacion del proveedor"
+                                   readonly="1"/>
+
+                            <field name="unit_price"
+                                   string="Precio unitario"
+                                   readonly="1"/>
+
+                            <field name="currency_id"
+                                   invisible="1"/>
+
+                        </group>
+
+                    </group>
+
+                    <separator string="Informacion de la compra"/>
+
+                    <group>
+
+                        <field name="purchase_id"
+                               string="Solicitud de compra"
+                               readonly="1"/>
+
+                        <field name="last_updated"
+                               string="Ultima actualizacion"
+                               readonly="1"/>
+
+                    </group>
+
+                    <div class="alert alert-success"
+                         invisible="status != 'received'">
+
+                        <strong>Reposicion completada.</strong>
+
+                        El pedido de compra fue recibido completamente.
+                        Este registro permanece guardado en el historial.
+
+                    </div>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+
+    <!-- ================================================= -->
+    <!-- MENU: REPOSICION INTELIGENTE -->
+    <!-- ================================================= -->
+
+    <menuitem id="menu_supercharly_replenishment"
+              name="Reposicion Inteligente"
+              parent="stock.menu_stock_root"
+              action="action_supercharly_replenishment"
+              sequence="92"/>
+
+
+    <!-- ================================================= -->
+    <!-- MENU: HISTORIAL DE REPOSICIONES -->
+    <!-- ================================================= -->
+
+    <menuitem id="menu_supercharly_replenishment_history"
+              name="Historial de Reposiciones"
+              parent="stock.menu_stock_root"
+              action="action_supercharly_replenishment_history"
+              sequence="93"/>
+
+</odoo>

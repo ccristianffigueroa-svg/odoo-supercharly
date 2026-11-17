@@ -1,0 +1,2696 @@
+
+/* ==========================================
+   SUPERCHARLY - PUNTO DE VENTA
+   Personalización visual de productos
+   Odoo 20.0
+   ========================================== */
+
+/* Colores generales */
+.pos {
+    --sc-green: #176B3A;
+    --sc-green-dark: #10552D;
+    --sc-yellow: #F6C945;
+    --sc-background: #F4F7F4;
+}
+
+/* Fondo principal */
+.pos {
+    background-color: var(--sc-background) !important;
+    color: #26332B;
+}
+
+/* Tarjetas de productos */
+.pos .product {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E0E8E1 !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease,
+                border-color 0.2s ease;
+}
+
+/* Efecto al pasar el mouse */
+.pos .product:hover {
+    border-color: var(--sc-green) !important;
+    box-shadow: 0 5px 12px rgba(79, 52, 153, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Selección mediante teclado */
+.pos .product:focus-visible {
+    outline: 2px solid var(--sc-green) !important;
+    outline-offset: 2px;
+}
+
+/* Imagen del producto */
+.pos .product-img {
+    overflow: hidden;
+    background-color: #FFFFFF;
+    border-radius: 18px 18px 0 0 !important;
+}
+
+/* Fotografía */
+.pos .product-img img {
+    transition: transform 0.25s ease;
+}
+
+/* Efecto de acercamiento */
+.pos .product:hover .product-img img {
+    transform: scale(1.04);
+}
+
+/* Contenedor del nombre */
+.pos .product-content {
+    padding: 8px !important;
+    margin: 0 !important;
+    background-color: #FFFFFF;
+}
+
+/* Nombre del producto */
+.pos .product-name {
+    color: #26332B !important;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+/* Color de selección */
+.pos .product:active {
+    border-color: var(--sc-green-dark) !important;
+}
+
+
+/* ==========================================
+   SUPERCHARLY - CARRITO / PEDIDO
+   ========================================== */
+
+/* Fondo del contenedor del pedido */
+.pos .order-container {
+    background-color: #F4F7F4 !important;
+    padding: 8px;
+}
+
+/* Cada producto agregado al carrito */
+.pos .orderline {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E0E8E1 !important;
+    border-radius: 20px !important;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+/* Producto seleccionado */
+.pos .orderline.selected {
+    border: 2px solid #176B3A !important;
+    background-color: #F2F8F3 !important;
+    box-shadow: 0 3px 8px rgba(23, 107, 58, 0.12);
+}
+
+/* Nombre del producto */
+.pos .orderline .product-name {
+    color: #7e7a7a !important;
+    font-weight: 600;
+}
+
+/* Cantidad */
+.pos .orderline .qty {
+    color: #176B3A !important;
+    font-weight: 800;
+}
+
+/* Precio */
+.pos .orderline .product-price {
+    color: #f00606 !important;
+    font-weight: 800;
+}
+
+/* Información adicional: lote */
+.pos .orderline .info-list {
+    color: #65756A;
+    font-size: 12px;
+}
+
+/* Icono de lote */
+.pos .orderline .line-lot-icon {
+    color: #176B3A !important;
+}
+
+/* Número de lote */
+.pos .orderline .lot-number {
+    color: #65756A;
+}
+
+
+
+/* ==========================================
+   SUPERCHARLY - BARRA SUPERIOR DEL POS
+   ========================================== */
+
+/* Fondo de la barra */
+.pos .pos-topheader {
+    background-color: #495af1 !important;
+    border-bottom: 3px solid #495af1 !important;
+    color: #FFFFFF !important;
+}
+
+/* Textos e iconos de la barra */
+.pos .pos-topheader,
+.pos .pos-topheader i {
+    color: #FFFFFF !important;
+}
+
+/* Botones Caja y Pedidos */
+.pos .pos-topheader .navbar-menu button {
+    background-color: transparent !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+    border-radius: 7px !important;
+}
+
+/* Botón activo: Caja o Pedidos */
+.pos .pos-topheader .navbar-menu button.active {
+    background-color: #a8f3fd !important;
+    color: #adffd6 !important;
+    border-color: #050505 !important;
+    font-weight: 700;
+}
+
+/* Efecto al pasar el mouse */
+.pos .pos-topheader .navbar-menu button:hover {
+    background-color: #495af1 !important;
+    color: #FFFFFF !important;
+}
+
+/* Botón para agregar pedidos */
+.pos .pos-topheader .list-plus-btn,
+.pos .pos-topheader .floating-order-container button {
+    background-color:#495af1 !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 7px !important;
+}
+
+/* Pedido o sesión seleccionada */
+.pos .pos-topheader .floating-order-container button.active {
+    background-color: #F6C945 !important;
+    color: #495af1 !important;
+    border-color: #F6C945 !important;
+    font-weight: 700;
+}
+
+/* Buscador */
+.pos .pos-topheader .input-container {
+    background-color: #FFFFFF !important;
+    border-radius: 8px !important;
+    border: 1px solid #DCE5DE !important;
+}
+
+/* Texto del buscador */
+.pos .pos-topheader input {
+    color: #26332B !important;
+}
+
+/* Botones de la derecha: lector, usuario y menú */
+.pos .pos-topheader .status-buttons > button {
+    background-color: #FFFFFF !important;
+    color: #0a0a0a !important;
+    border: 1px solid #E0E8E1 !important;
+    border-radius: 8px !important;
+}
+
+/* Hover de botones derechos */
+.pos .pos-topheader .status-buttons > button:hover {
+    background-color: #F6C945 !important;
+    color: #26332B !important;
+}
+
+/* Separador */
+.pos .pos-topheader .navbar-separator {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+
+/* ==========================================
+   SUPERCHARLY - NUEVA IDENTIDAD AZUL
+   ========================================== */
+
+.pos {
+    --sc-blue: #185ADB;
+    --sc-blue-dark: #123B82;
+    --sc-blue-light: #EAF2FF;
+    --sc-background: #F4F6FA;
+    --sc-text: #263449;
+    --sc-border: #DCE4F0;
+}
+
+/* Fondo general */
+.pos {
+    background-color: var(--sc-background) !important;
+    color: var(--sc-text) !important;
+}
+
+/* Barra superior */
+.pos .pos-topheader {
+    background-color: var(--sc-blue) !important;
+    border-bottom: 3px solid var(--sc-blue-dark) !important;
+    color: #FFFFFF !important;
+}
+
+/* Botones de navegación */
+.pos .pos-topheader .navbar-menu button {
+    background-color: transparent !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255,255,255,.45) !important;
+}
+
+/* Navegación activa */
+.pos .pos-topheader .navbar-menu button.active {
+    background-color: #FFFFFF !important;
+    color: var(--sc-blue) !important;
+    border-color: #FFFFFF !important;
+    font-weight: 700;
+}
+
+/* Botones de pedidos */
+.pos .pos-topheader .list-plus-btn,
+.pos .pos-topheader .floating-order-container button {
+    background-color: var(--sc-blue-dark) !important;
+    color: #FFFFFF !important;
+}
+
+/* Pedido seleccionado */
+.pos .pos-topheader .floating-order-container button.active {
+    background-color: var(--sc-blue-light) !important;
+    color: var(--sc-blue-dark) !important;
+}
+
+/* Buscador */
+.pos .pos-topheader .input-container {
+    background-color: #FFFFFF !important;
+    border: 1px solid var(--sc-border) !important;
+    border-radius: 8px !important;
+}
+
+/* Botones de la derecha */
+.pos .pos-topheader .status-buttons > button {
+    background-color: #FFFFFF !important;
+    color: var(--sc-blue) !important;
+    border: 1px solid var(--sc-border) !important;
+}
+
+/* Tarjetas de productos */
+.pos .product {
+    background-color: #FFFFFF !important;
+    border-color: var(--sc-border) !important;
+}
+
+/* Selección de productos */
+.pos .product:hover {
+    border-color: var(--sc-blue) !important;
+    box-shadow: 0 5px 12px rgba(24, 90, 219, .15) !important;
+}
+
+/* Carrito */
+.pos .order-container {
+    background-color: var(--sc-background) !important;
+}
+
+.pos .orderline {
+    background-color: #FFFFFF !important;
+    border-color: var(--sc-border) !important;
+}
+
+/* Producto seleccionado en carrito */
+.pos .orderline.selected {
+    background-color: var(--sc-blue-light) !important;
+    border-color: var(--sc-blue) !important;
+}
+
+/* Cantidades y precios */
+.pos .orderline .qty,
+.pos .orderline .product-price {
+    color: var(--sc-blue-dark) !important;
+}
+
+/* Textos */
+.pos .product-name,
+.pos .orderline .product-name {
+    color: var(--sc-text) !important;
+}
+
+
+
+/* ==========================================
+   SUPERCHARLY - BOTONES DE CONTROL
+   ========================================== */
+
+/* Botones Cliente, Nota, Subir y Más */
+.pos .control-buttons button {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 9px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease;
+}
+
+/* Efecto al pasar el mouse */
+.pos .control-buttons button:hover {
+    background-color: #EAF2FF !important;
+    color: #123B82 !important;
+    border-color: #185ADB !important;
+}
+
+/* Botón Cliente */
+.pos .control-buttons .set-partner {
+    border-left: 4px solid #185ADB !important;
+}
+
+/* Botón Nota */
+.pos .control-buttons .control-button {
+    border-left: 4px solid #55A6E8 !important;
+}
+
+/* Botón Más opciones */
+.pos .control-buttons .more-btn {
+    background-color: #185ADB !important;
+    color: #FFFFFF !important;
+    border-color: #185ADB !important;
+}
+
+/* Hover Más opciones */
+.pos .control-buttons .more-btn:hover {
+    background-color: #123B82 !important;
+    color: #FFFFFF !important;
+}
+
+/* Iconos */
+.pos .control-buttons button i {
+    color: inherit !important;
+}
+
+
+/* ==========================================
+   SUPERCHARLY - PANTALLA DE PAGO
+   PALETA AZUL
+   ========================================== */
+
+/* Fondo de la pantalla de pago */
+.pos .left-content {
+    background-color: #F4F6FA !important;
+    color: #263449 !important;
+}
+
+/* Métodos de pago: efectivo, tarjeta y cuenta */
+.pos .paymentmethods .paymentmethod {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease;
+}
+
+/* Efecto al pasar el mouse */
+.pos .paymentmethods .paymentmethod:hover {
+    background-color: #EAF2FF !important;
+    border-color: #185ADB !important;
+}
+
+/* Método de pago seleccionado */
+.pos .paymentmethods .paymentmethod.selected,
+.pos .paymentmethods .paymentmethod.active {
+    background-color: #185ADB !important;
+    color: #FFFFFF !important;
+    border-color: #123B82 !important;
+}
+
+/* Nombre de los métodos de pago */
+.pos .paymentmethods .payment-name {
+    color: inherit !important;
+    font-weight: 700;
+}
+
+/* Iconos de los métodos de pago */
+.pos .paymentmethods .payment-method-icon {
+    object-fit: contain;
+}
+
+/* Botones Cliente y Factura */
+.pos .payment-buttons button {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+}
+
+/* Hover Cliente y Factura */
+.pos .payment-buttons button:hover {
+    background-color: #EAF2FF !important;
+    border-color: #185ADB !important;
+}
+
+/* Teclado numérico */
+.pos .numpad .numpad-button {
+    background-color: #FFFFFF !important;
+    color: #263449 !important;
+    border: 1px solid #DCE4F0 !important;
+    font-weight: 600 !important;
+    transition: background-color 0.15s ease;
+}
+
+/* Hover del teclado */
+.pos .numpad .numpad-button:hover {
+    background-color: #EAF2FF !important;
+    color: #185ADB !important;
+}
+
+/* Botón de borrar */
+.pos .numpad .numpad-button[value="⌫"] {
+    background-color: #FCECEC !important;
+    color: #B42318 !important;
+}
+
+/* Botones de cantidades adicionales */
+.pos .numpad .numpad-button[value^="+"] {
+    background-color: #DCEAFF !important;
+    color: #123B82 !important;
+}
+
+/* Botón Regresar */
+.pos .back-button {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border: 1px solid #185ADB !important;
+    border-radius: 9px !important;
+    font-weight: 700 !important;
+}
+
+/* Hover Regresar */
+.pos .back-button:hover {
+    background-color: #EAF2FF !important;
+}
+
+/* Botón principal Validar / Efectivo */
+.pos .validation-button {
+    background-color: #185ADB !important;
+    color: #FFFFFF !important;
+    border: 1px solid #185ADB !important;
+    border-radius: 9px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 3px 8px rgba(24, 90, 219, 0.18);
+}
+
+/* Hover Validar */
+.pos .validation-button:hover {
+    background-color: #123B82 !important;
+    border-color: #123B82 !important;
+}
+
+/* Foco accesible */
+.pos .paymentmethod:focus-visible,
+.pos .numpad-button:focus-visible,
+.pos .validation-button:focus-visible {
+    outline: 2px solid #185ADB !important;
+    outline-offset: 2px;
+}
+
+
+/* ==========================================
+   SUPERCHARLY - BOTÓN PAGO
+   ========================================== */
+
+.pos .pay-order-button {
+    background-color: #185ADB !important;
+    color: #FFFFFF !important;
+    border: 1px solid #185ADB !important;
+    border-radius: 10px !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 3px 8px rgba(24, 90, 219, 0.20);
+    transition: all 0.2s ease;
+}
+
+/* Efecto al pasar el mouse */
+.pos .pay-order-button:hover {
+    background-color: #123B82 !important;
+    border-color: #123B82 !important;
+    transform: translateY(-1px);
+}
+
+/* Efecto al presionar */
+.pos .pay-order-button:active {
+    transform: scale(0.98);
+}
+
+/* Foco accesible */
+.pos .pay-order-button:focus-visible {
+    outline: 2px solid #185ADB !important;
+    outline-offset: 3px;
+}
+
+/* ==========================================
+   SUPERCHARLY - TOTAL DE LA VENTA
+   ========================================== */
+
+/* Contenedor del total */
+.pos .center-content {
+    background-color: #F4F6FA !important;
+    border-radius: 12px;
+    padding: 20px !important;
+}
+
+/* Panel del monto */
+.pos .paymentlines-container {
+    background-color: #EAF2FF !important;
+    border: 1px solid #C8D9FA !important;
+    border-radius: 16px !important;
+    padding: 25px 35px !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Importe total */
+.pos .paymentlines-container .total {
+    color: #123B82 !important;
+    font-weight: 800 !important;
+    letter-spacing: -2px;
+}
+
+/* Símbolo de moneda */
+.pos .paymentlines-container .total span {
+    color: #185ADB !important;
+}
+
+/* Cuando existen líneas de pago */
+.pos .paymentlines-container:not(.paymentlines-empty) {
+    background-color: #FFFFFF !important;
+}
+
+/* ==========================================
+   SUPERCHARLY - INFORMACIÓN DEL PAGO
+   ========================================== */
+
+/* Contenedor del pago */
+.pos .payment-infos {
+    background-color: #EAF2FF !important;
+    border: 1px solid #C8D9FA !important;
+    border-left: 5px solid #185ADB !important;
+    border-radius: 12px !important;
+    padding: 18px !important;
+    margin-bottom: 8px;
+    color: #123B82 !important;
+    transition: all 0.2s ease;
+}
+
+/* Nombre del método de pago */
+.pos .payment-infos .payment-name {
+    color: #123B82 !important;
+    font-weight: 700 !important;
+}
+
+/* Monto ingresado */
+.pos .payment-infos .payment-amount {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 8px !important;
+    padding: 8px 14px !important;
+    font-weight: 800 !important;
+}
+
+/* Símbolo de moneda */
+.pos .payment-infos .payment-amount span {
+    color: #185ADB !important;
+}
+
+/* Efecto al pasar el mouse */
+.pos .payment-infos:hover {
+    background-color: #DCEAFF !important;
+    border-color: #185ADB !important;
+}
+
+/* ==========================================
+   SUPERCHARLY - ESTADO DEL PAGO Y VUELTO
+   ========================================== */
+
+/* Contenedor del estado */
+.pos .payment-status-container {
+    background-color: #F4F6FA !important;
+    border-radius: 12px !important;
+    padding: 10px !important;
+    margin-top: 8px;
+}
+
+/* Información del vuelto */
+.pos .payment-status-amount {
+    background-color: #E8F7EE !important;
+    border: 1px solid #B7E4C7 !important;
+    border-left: 5px solid #168447 !important;
+    border-radius: 10px !important;
+    padding: 14px !important;
+    color: #166534 !important;
+}
+
+/* Etiqueta Vuelto */
+.pos .payment-status-amount .label {
+    color: #166534 !important;
+    font-weight: 700 !important;
+}
+
+/* Monto del vuelto */
+.pos .payment-status-amount .amount {
+    color: #168447 !important;
+    font-weight: 800 !important;
+}
+
+/* Símbolo de moneda */
+.pos .payment-status-amount .amount span {
+    color: inherit !important;
+}
+
+/* ==========================================
+   SUPERCHARLY - BUSCADOR Y ACCESOS SUPERIORES
+   ========================================== */
+
+/* Contenedor general */
+.pos .pos-topheader .status-buttons {
+    gap: 8px !important;
+}
+
+/* Buscador */
+.pos .pos-topheader .status-buttons .input-container {
+    background-color: #FFFFFF !important;
+    border: 2px solid #DCE4F0 !important;
+    border-radius: 10px !important;
+    padding: 4px 10px !important;
+    transition: border-color 0.2s ease;
+}
+
+/* Icono de búsqueda */
+.pos .pos-topheader .status-buttons .input-container i {
+    color: #185ADB !important;
+}
+
+/* Campo de texto */
+.pos .pos-topheader .status-buttons input {
+    background-color: transparent !important;
+    color: #263449 !important;
+    font-size: 14px !important;
+}
+
+/* Texto de ayuda del buscador */
+.pos .pos-topheader .status-buttons input::placeholder {
+    color: #8290A5 !important;
+}
+
+/* Buscador cuando está seleccionado */
+.pos .pos-topheader .status-buttons .input-container:focus-within {
+    border-color: #185ADB !important;
+    box-shadow: 0 0 0 3px rgba(24, 90, 219, 0.12);
+}
+
+/* Botones lector, usuario y menú */
+.pos .pos-topheader .status-buttons > button {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 9px !important;
+    transition: all 0.2s ease;
+}
+
+/* Iconos */
+.pos .pos-topheader .status-buttons > button i {
+    color: #185ADB !important;
+}
+
+/* Efecto hover */
+.pos .pos-topheader .status-buttons > button:hover {
+    background-color: #EAF2FF !important;
+    border-color: #185ADB !important;
+}
+
+/* Imagen del usuario */
+.pos .pos-topheader .cashier-name .avatar {
+    border: 2px solid #185ADB !important;
+    border-radius: 8px !important;
+}
+
+/* ==========================================
+   SUPERCHARLY - MONTO DEL PEDIDO
+   ========================================== */
+
+/* Importe */
+.pos .amount.lh-sm {
+    color: #123B82 !important;
+    font-weight: 900 !important;
+    font-size: 250px !important;
+    letter-spacing: -0.8px;
+    transition: color 0.2s ease;
+}
+
+/* Símbolo de moneda */
+.pos .amount.lh-sm span {
+    color: #185ADB !important;
+    font-weight: 700 !important;
+}
+
+/* Contenedor del importe */
+.pos .amount.lh-sm {
+    text-shadow: 0 1px 1px rgba(18, 59, 130, 0.05);
+}
+
+/* ==========================================
+   SUPERCHARLY - BOTONES POSTERIORES AL PAGO
+   ========================================== */
+
+/* Contenedor de botones */
+.pos .desktop-format {
+    gap: 12px !important;
+}
+
+/* Botones secundarios */
+.pos .desktop-format > button {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(24, 90, 219, 0.06);
+}
+
+/* Iconos de botones secundarios */
+.pos .desktop-format > button i {
+    color: #185ADB !important;
+}
+
+/* Hover de botones secundarios */
+.pos .desktop-format > button:not(.validation):hover {
+    background-color: #EAF2FF !important;
+    border-color: #185ADB !important;
+    transform: translateY(-1px);
+}
+
+/* Botón Continuar */
+.pos .desktop-format > button.validation {
+    background-color: #185ADB !important;
+    color: #FFFFFF !important;
+    border: 1px solid #185ADB !important;
+    font-weight: 800 !important;
+    box-shadow: 0 3px 8px rgba(24, 90, 219, 0.20);
+}
+
+/* Hover Continuar */
+.pos .desktop-format > button.validation:hover {
+    background-color: #123B82 !important;
+    border-color: #123B82 !important;
+    transform: translateY(-1px);
+}
+
+/* Efecto al presionar */
+.pos .desktop-format > button:active {
+    transform: scale(0.98);
+}
+
+/* Foco accesible */
+.pos .desktop-format > button:focus-visible {
+    outline: 2px solid #185ADB !important;
+    outline-offset: 3px;
+}
+
+/* ==========================================
+   SUPERCHARLY - VENTANA DE IMPRESION
+   ========================================== */
+
+/* Ventana principal */
+.pos .print-popup {
+    background-color: #FFFFFF !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 12px 35px rgba(18, 59, 130, 0.18) !important;
+    overflow: hidden;
+}
+
+/* Encabezado */
+.pos .print-popup .modal-header {
+    background-color: #EAF2FF !important;
+    border-bottom: 1px solid #DCE4F0 !important;
+    padding: 20px 24px !important;
+}
+
+.pos .print-popup .modal-title {
+    color: #123B82 !important;
+    font-weight: 800 !important;
+}
+
+.pos .print-popup .btn-close {
+    opacity: 0.7;
+}
+
+/* Cuerpo */
+.pos .print-popup .modal-body {
+    background-color: #F4F6FA !important;
+    padding: 24px !important;
+}
+
+/* Contenedor de opciones */
+.pos .print-popup-modal {
+    display: flex;
+    justify-content: center;
+    gap: 18px !important;
+}
+
+/* Botones de impresión */
+.pos .print-popup .print-button {
+    min-width: 180px;
+    min-height: 145px;
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border: 2px solid #DCE4F0 !important;
+    border-radius: 14px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease;
+}
+
+/* Iconos */
+.pos .print-popup .print-button i {
+    color: #185ADB !important;
+    opacity: 1 !important;
+    font-size: 32px !important;
+}
+
+/* Texto */
+.pos .print-popup .print-button span {
+    color: inherit !important;
+}
+
+/* Efecto al pasar el mouse */
+.pos .print-popup .print-button:hover {
+    background-color: #EAF2FF !important;
+    border-color: #185ADB !important;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(24, 90, 219, 0.12);
+}
+
+/* Primera opción: recibo completo */
+.pos .print-popup .print-button.btn-primary {
+    background-color: #185ADB !important;
+    color: #FFFFFF !important;
+    border-color: #185ADB !important;
+}
+
+.pos .print-popup .print-button.btn-primary i,
+.pos .print-popup .print-button.btn-primary span {
+    color: #FFFFFF !important;
+}
+
+.pos .print-popup .print-button.btn-primary:hover {
+    background-color: #123B82 !important;
+    border-color: #123B82 !important;
+}
+
+/* Segunda opción: recibo simplificado */
+.pos .print-popup .print-button.btn-secondary {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border-color: #DCE4F0 !important;
+}
+
+.pos .print-popup .print-button.btn-secondary:hover {
+    background-color: #EAF2FF !important;
+    border-color: #185ADB !important;
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 576px) {
+    .pos .print-popup-modal {
+        flex-direction: column;
+    }
+
+    .pos .print-popup .print-button {
+        width: 100%;
+        min-height: 100px;
+    }
+}
+
+/* ==========================================
+   SUPERCHARLY - ENVIAR RECIBO POR EMAIL
+   ========================================== */
+
+/* Ventana principal */
+.pos .send-receipt-popup {
+    background-color: #FFFFFF !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(18, 59, 130, 0.18) !important;
+}
+
+/* Encabezado */
+.pos .send-receipt-popup .modal-header {
+    background-color: #EAF2FF !important;
+    border-bottom: 1px solid #DCE4F0 !important;
+    min-height: 65px;
+    padding: 18px 24px !important;
+}
+
+/* Título */
+.pos .send-receipt-popup .modal-title {
+    color: #123B82 !important;
+    font-weight: 800 !important;
+}
+
+/* Botón cerrar */
+.pos .send-receipt-popup .btn-close {
+    opacity: 0.7;
+}
+
+/* Cuerpo */
+.pos .send-receipt-popup .modal-body {
+    background-color: #F4F6FA !important;
+    padding: 24px !important;
+}
+
+/* Campo de correo */
+.pos .send-receipt-popup .send-receipt-email-input {
+    background-color: #FFFFFF !important;
+    color: #263449 !important;
+    border: 2px solid #DCE4F0 !important;
+    border-right: 0 !important;
+    border-radius: 10px 0 0 10px !important;
+    min-height: 58px;
+    font-size: 16px !important;
+    font-weight: 500;
+    box-shadow: none !important;
+}
+
+/* Texto de ejemplo */
+.pos .send-receipt-popup .send-receipt-email-input::placeholder {
+    color: #8290A5 !important;
+}
+
+/* Campo seleccionado */
+.pos .send-receipt-popup .send-receipt-email-input:focus {
+    border-color: #185ADB !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(24, 90, 219, 0.12) !important;
+}
+
+/* Botón enviar */
+.pos .send-receipt-popup .btn-primary {
+    background-color: #185ADB !important;
+    color: #FFFFFF !important;
+    border: 1px solid #185ADB !important;
+    border-radius: 0 10px 10px 0 !important;
+    min-height: 58px;
+    transition: all 0.2s ease;
+}
+
+/* Icono enviar */
+.pos .send-receipt-popup .btn-primary i {
+    color: #FFFFFF !important;
+    font-size: 20px !important;
+}
+
+/* Hover */
+.pos .send-receipt-popup .btn-primary:not(:disabled):hover {
+    background-color: #123B82 !important;
+    border-color: #123B82 !important;
+}
+
+/* Botón deshabilitado */
+.pos .send-receipt-popup .btn-primary:disabled {
+    background-color: #A9BFEA !important;
+    border-color: #A9BFEA !important;
+    color: #FFFFFF !important;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Mensajes de aviso */
+.pos .send-receipt-popup .notice {
+    color: #123B82 !important;
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 8px;
+}
+
+/* ==========================================
+   SUPERCHARLY - SELECCION DE CLIENTES
+   ========================================== */
+
+/* Ventana principal */
+.pos .modal-content:has(.partner-list) {
+    background-color: #FFFFFF !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(18, 59, 130, 0.18) !important;
+}
+
+/* Encabezado */
+.pos .modal-content:has(.partner-list) .modal-header {
+    background-color: #EAF2FF !important;
+    border-bottom: 1px solid #DCE4F0 !important;
+    padding: 18px 22px !important;
+    gap: 12px;
+}
+
+/* Título */
+.pos .modal-content:has(.partner-list) .modal-title {
+    color: #123B82 !important;
+    font-weight: 800 !important;
+}
+
+/* Botón Crear */
+.pos .modal-content:has(.partner-list) .modal-header .btn-primary {
+    background-color: #185ADB !important;
+    border-color: #185ADB !important;
+    color: #FFFFFF !important;
+    border-radius: 9px !important;
+    font-weight: 700 !important;
+}
+
+.pos .modal-content:has(.partner-list) .modal-header .btn-primary:hover {
+    background-color: #123B82 !important;
+}
+
+/* Buscador */
+.pos .modal-content:has(.partner-list) .input-container {
+    background-color: #FFFFFF !important;
+    border: 2px solid #DCE4F0 !important;
+    border-radius: 10px !important;
+    padding: 5px 10px !important;
+}
+
+.pos .modal-content:has(.partner-list) .input-container i {
+    color: #185ADB !important;
+}
+
+.pos .modal-content:has(.partner-list) .input-container input {
+    background-color: transparent !important;
+    color: #263449 !important;
+    font-size: 14px !important;
+}
+
+.pos .modal-content:has(.partner-list) .input-container input::placeholder {
+    color: #8290A5 !important;
+}
+
+.pos .modal-content:has(.partner-list) .input-container:focus-within {
+    border-color: #185ADB !important;
+    box-shadow: 0 0 0 3px rgba(24, 90, 219, 0.12);
+}
+
+/* Cuerpo */
+.pos .modal-content:has(.partner-list) .modal-body {
+    background-color: #F4F6FA !important;
+    padding: 15px 20px !important;
+}
+
+/* Tabla */
+.pos .modal-content:has(.partner-list) .table {
+    border-collapse: separate !important;
+    border-spacing: 0 7px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Filas de clientes */
+.pos .modal-content:has(.partner-list) .partner-line {
+    background-color: #FFFFFF !important;
+    color: #263449 !important;
+    border-radius: 10px !important;
+    transition: all 0.2s ease;
+}
+
+/* Celdas */
+.pos .modal-content:has(.partner-list) .partner-line td {
+    background-color: #FFFFFF !important;
+    border-top: 1px solid #DCE4F0 !important;
+    border-bottom: 1px solid #DCE4F0 !important;
+    padding: 14px 12px !important;
+    vertical-align: middle !important;
+}
+
+/* Bordes redondeados de las filas */
+.pos .modal-content:has(.partner-list) .partner-line td:first-child {
+    border-left: 1px solid #DCE4F0 !important;
+    border-radius: 10px 0 0 10px !important;
+}
+
+.pos .modal-content:has(.partner-list) .partner-line td:last-child {
+    border-right: 1px solid #DCE4F0 !important;
+    border-radius: 0 10px 10px 0 !important;
+}
+
+/* Nombre del cliente */
+.pos .modal-content:has(.partner-list) .partner-line b {
+    color: #123B82 !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+}
+
+/* Correo y dirección */
+.pos .modal-content:has(.partner-list) .partner-line .email-field,
+.pos .modal-content:has(.partner-list) .partner-line .partner-line-adress {
+    color: #65758B !important;
+    font-size: 10px !important;
+}
+
+/* Iconos de correo y teléfono */
+.pos .modal-content:has(.partner-list) .partner-line i {
+    color: #185ADB !important;
+}
+
+/* Hover de clientes */
+.pos .modal-content:has(.partner-list) .partner-line:hover td {
+    background-color: #EAF2FF !important;
+    border-color: #B8CDF5 !important;
+}
+
+/* Botón de opciones */
+.pos .modal-content:has(.partner-list) .partner-line .dropdown {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 8px !important;
+}
+
+.pos .modal-content:has(.partner-list) .partner-line .dropdown:hover {
+    background-color: #EAF2FF !important;
+    border-color: #185ADB !important;
+}
+
+/* Pie de ventana */
+.pos .modal-content:has(.partner-list) .modal-footer {
+    background-color: #FFFFFF !important;
+    border-top: 1px solid #DCE4F0 !important;
+    padding: 15px 20px !important;
+}
+
+/* Botón descartar */
+.pos .modal-content:has(.partner-list) .modal-footer .btn-secondary {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border: 1px solid #185ADB !important;
+    border-radius: 9px !important;
+    font-weight: 700 !important;
+    padding: 10px !important;
+}
+
+.pos .modal-content:has(.partner-list) .modal-footer .btn-secondary:hover {
+    background-color: #EAF2FF !important;
+}
+
+
+
+/* ==========================================
+   SUPERCHARLY - ENTRADA Y SALIDA DE EFECTIVO
+   ========================================== */
+
+/* Ventana principal */
+.pos .modal-content:has(.input-amount) {
+    background-color: #FFFFFF !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(18, 59, 130, 0.18) !important;
+}
+
+/* Cuerpo */
+.pos .modal-content:has(.input-amount) .modal-body {
+    background-color: #F4F6FA !important;
+    padding: 24px !important;
+}
+
+/* Contenedor de entrada y salida */
+.pos .modal-content:has(.input-amount) .input-amount {
+    gap: 12px !important;
+    align-items: stretch;
+}
+
+/* Botones de tipo de movimiento */
+.pos .modal-content:has(.input-amount) .input-type {
+    border-radius: 9px !important;
+    font-weight: 700 !important;
+    border: 1px solid #DCE4F0 !important;
+    transition: all 0.2s ease;
+}
+
+/* Entrada de efectivo */
+.pos .modal-content:has(.input-amount) .input-type:not(.btn-danger) {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border-color: #185ADB !important;
+}
+
+.pos .modal-content:has(.input-amount) .input-type:not(.btn-danger):hover {
+    background-color: #EAF2FF !important;
+}
+
+/* Salida de efectivo */
+.pos .modal-content:has(.input-amount) .input-type.btn-danger {
+    background-color: #FCECEC !important;
+    color: #B42318 !important;
+    border-color: #F0B8B8 !important;
+}
+
+.pos .modal-content:has(.input-amount) .input-type.btn-danger:hover {
+    background-color: #F8DADA !important;
+}
+
+/* Campo del monto */
+.pos .modal-content:has(.input-amount) .input-container {
+    background-color: #FFFFFF !important;
+    border: 2px solid #DCE4F0 !important;
+    border-radius: 10px !important;
+    min-height: 48px;
+}
+
+.pos .modal-content:has(.input-amount) .input-container:focus-within {
+    border-color: #185ADB !important;
+    box-shadow: 0 0 0 3px rgba(24, 90, 219, 0.12);
+}
+
+/* Símbolo de moneda */
+.pos .modal-content:has(.input-amount) .input-container span {
+    color: #185ADB !important;
+    font-weight: 800 !important;
+}
+
+/* Texto del monto */
+.pos .modal-content:has(.input-amount) .input-container input {
+    background-color: transparent !important;
+    color: #123B82 !important;
+    font-size: 19px !important;
+    font-weight: 800 !important;
+}
+
+/* Icono limpiar */
+.pos .modal-content:has(.input-amount) .input-container i {
+    color: #8290A5 !important;
+    cursor: pointer;
+}
+
+/* Campo motivo */
+.pos .modal-content:has(.input-amount) .form-floating textarea {
+    background-color: #FFFFFF !important;
+    color: #263449 !important;
+    border: 2px solid #DCE4F0 !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    resize: vertical;
+    box-shadow: none !important;
+}
+
+/* Motivo seleccionado */
+.pos .modal-content:has(.input-amount) .form-floating textarea:focus {
+    border-color: #185ADB !important;
+    box-shadow: 0 0 0 3px rgba(24, 90, 219, 0.12) !important;
+}
+
+/* Etiqueta motivo */
+.pos .modal-content:has(.input-amount) .form-floating label {
+    color: #65758B !important;
+}
+
+/* Pie de ventana */
+.pos .modal-content:has(.input-amount) .modal-footer {
+    background-color: #FFFFFF !important;
+    border-top: 1px solid #DCE4F0 !important;
+    padding: 18px 24px !important;
+}
+
+/* Botones generales */
+.pos .modal-content:has(.input-amount) .modal-footer .button {
+    border-radius: 9px !important;
+    font-weight: 700 !important;
+    padding: 9px 18px !important;
+    transition: all 0.2s ease;
+}
+
+/* Confirmar */
+.pos .modal-content:has(.input-amount) .modal-footer .confirm {
+    background-color: #185ADB !important;
+    color: #FFFFFF !important;
+    border: 1px solid #185ADB !important;
+}
+
+.pos .modal-content:has(.input-amount) .modal-footer .confirm:not(:disabled):hover {
+    background-color: #123B82 !important;
+}
+
+/* Confirmar deshabilitado */
+.pos .modal-content:has(.input-amount) .modal-footer .confirm:disabled {
+    background-color: #A9BFEA !important;
+    border-color: #A9BFEA !important;
+    opacity: 0.7;
+}
+
+/* Descartar y detalles */
+.pos .modal-content:has(.input-amount) .modal-footer .cancel,
+.pos .modal-content:has(.input-amount) .modal-footer button:not(.confirm) {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border: 1px solid #DCE4F0 !important;
+}
+
+.pos .modal-content:has(.input-amount) .modal-footer .cancel:hover,
+.pos .modal-content:has(.input-amount) .modal-footer button:not(.confirm):not(:disabled):hover {
+    background-color: #EAF2FF !important;
+    border-color: #185ADB !important;
+}
+
+/* Detalles deshabilitado */
+.pos .modal-content:has(.input-amount) .modal-footer button:disabled {
+    opacity: 0.6;
+}
+
+/* =====================================
+   SUPERCHARLY - NUEVA DISTRIBUCIÓN POS
+   ===================================== */
+
+/* Catálogo de productos a la izquierda */
+.pos .product-screen > .rightpane {
+    order: 1;
+    flex: 1 1 65% !important;
+    min-width: 0;
+    background-color: #F4F6FA !important;
+}
+
+/* Carrito y pedido a la derecha */
+.pos .product-screen > .leftpane {
+    order: 2;
+    flex: 0 0 35% !important;
+    width: 35% !important;
+    max-width: 480px;
+    min-width: 320px;
+    border-left: 1px solid #DCE4F0 !important;
+    border-right: none !important;
+    background-color: #FFFFFF !important;
+}
+
+/* Catálogo */
+.pos .rightpane .product-list {
+    background-color: #F4F6FA !important;
+}
+
+
+/* ==========================================
+   SUPERCHARLY - AJUSTE DE ANCHOS DEL POS
+   Catálogo amplio + carrito compacto
+   ========================================== */
+
+/* Panel del catálogo: 70% */
+.pos .product-screen > .rightpane {
+    order: 1;
+    flex: 1 1 70% !important;
+    width: 70% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    background-color: #F4F6FA !important;
+}
+
+/* Panel del carrito: 30% */
+.pos .product-screen > .leftpane {
+    order: 2;
+    flex: 0 0 30% !important;
+    width: 30% !important;
+    min-width: 300px !important;
+    max-width: 430px !important;
+    border-left: 1px solid #DCE4F0 !important;
+    border-right: none !important;
+    background-color: #FFFFFF !important;
+}
+
+/* Aprovechar el espacio del catálogo */
+.pos .rightpane .product-list {
+    padding: 12px !important;
+    gap: 12px !important;
+}
+
+/* Evitar desbordamientos */
+.pos .product-screen > .rightpane,
+.pos .product-screen > .leftpane {
+    box-sizing: border-box !important;
+}
+
+/* Adaptación a pantallas medianas */
+@media (max-width: 1100px) {
+    .pos .product-screen > .rightpane {
+        flex-basis: 62% !important;
+        width: 62% !important;
+    }
+
+    .pos .product-screen > .leftpane {
+        flex-basis: 38% !important;
+        width: 38% !important;
+        min-width: 280px !important;
+    }
+}
+
+
+
+/* ==========================================
+   SUPERCHARLY - DISTRIBUCION 70 / 30
+   ========================================== */
+
+.pos .product-screen {
+    display: flex !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* CATALOGO - 70% */
+.pos .product-screen > .rightpane {
+    order: 1 !important;
+    flex: 7 1 0% !important;
+    width: 70% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+}
+
+/* CARRITO - 30% */
+.pos .product-screen > .leftpane {
+    order: 2 !important;
+    flex: 3 1 0% !important;
+    width: 30% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    border-left: 1px solid #DCE4F0 !important;
+    border-right: none !important;
+}
+
+/* Separación visual */
+.pos .product-screen > .rightpane {
+    background-color: #F4F6FA !important;
+}
+
+.pos .product-screen > .leftpane {
+    background-color: #FFFFFF !important;
+}
+
+
+
+/* ==========================================
+   SUPERCHARLY - CARRITO PROFESIONAL
+   ========================================== */
+
+/* Panel del carrito */
+.pos .leftpane {
+    background-color: #FFFFFF !important;
+    border-left: 1px solid #DCE4F0 !important;
+}
+
+/* Fondo de la lista */
+.pos .leftpane .order-container {
+    background-color: #F4F6FA !important;
+    padding: 12px !important;
+}
+
+/* Tarjetas de productos */
+.pos .leftpane .order-container .orderline {
+    background-color: #FFFFFF !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 12px !important;
+    margin-bottom: 10px !important;
+    padding: 5px !important;
+    box-shadow: 0 2px 6px rgba(18, 59, 130, 0.07) !important;
+    transition: all 0.2s ease;
+}
+
+/* Producto seleccionado */
+.pos .leftpane .order-container .orderline.selected {
+    background-color: #EAF2FF !important;
+    border: 2px solid #185ADB !important;
+    box-shadow: 0 3px 8px rgba(24, 90, 219, 0.12) !important;
+}
+
+/* Nombre del producto */
+.pos .leftpane .orderline .product-name {
+    color: #263449 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+
+/* Cantidad */
+.pos .leftpane .orderline .qty {
+    color: #185ADB !important;
+    font-weight: 900 !important;
+}
+
+/* Precio individual */
+.pos .leftpane .orderline .product-price {
+    color: #123B82 !important;
+    font-size: 15px !important;
+    font-weight: 900 !important;
+}
+
+/* Información adicional */
+.pos .leftpane .orderline .info-list {
+    color: #8290A5 !important;
+    font-size: 11px !important;
+}
+
+/* Efecto al pasar el mouse */
+.pos .leftpane .order-container .orderline:hover {
+    border-color: #185ADB !important;
+}
+
+
+/* ==========================================
+   SUPERCHARLY - TOTAL Y BOTON DE PAGO
+   ========================================== */
+
+/* Contenedor del total */
+.pos .leftpane .order-summary {
+    background-color: #EAF2FF !important;
+    border: 1px solid #C8D9FA !important;
+    border-radius: 14px !important;
+    padding: 14px !important;
+    margin: 10px !important;
+}
+
+/* Importe total */
+.pos .leftpane .amount.lh-sm {
+    color: #123B82 !important;
+    font-size: 42px !important;
+    font-weight: 900 !important;
+    letter-spacing: -1px !important;
+    line-height: 1.2 !important;
+}
+
+/* Símbolo de moneda */
+.pos .leftpane .amount.lh-sm span {
+    color: #185ADB !important;
+    font-size: 34px !important;
+    font-weight: 800 !important;
+}
+
+/* Botón PAGO */
+.pos .leftpane .pay-order-button {
+    background-color: #185ADB !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 12px !important;
+    min-height: 58px !important;
+    font-size: 19px !important;
+    font-weight: 800 !important;
+    box-shadow: 0 4px 10px rgba(24, 90, 219, 0.22) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Efecto al pasar el mouse */
+.pos .leftpane .pay-order-button:hover {
+    background-color: #123B82 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(24, 90, 219, 0.28) !important;
+}
+
+/* Al presionar */
+.pos .leftpane .pay-order-button:active {
+    transform: scale(0.98);
+}
+
+
+/* ==========================================
+   SUPERCHARLY - CONTROLES DEL CARRITO
+   ========================================== */
+
+/* Contenedor de controles */
+.pos .leftpane .control-buttons {
+    display: flex !important;
+    gap: 8px !important;
+    padding: 10px !important;
+    background-color: #FFFFFF !important;
+    border-bottom: 1px solid #DCE4F0 !important;
+}
+
+/* Botones generales */
+.pos .leftpane .control-buttons button {
+    background-color: #F4F7FC !important;
+    color: #185ADB !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Hover */
+.pos .leftpane .control-buttons button:hover {
+    background-color: #EAF2FF !important;
+    border-color: #185ADB !important;
+    color: #123B82 !important;
+}
+
+/* Iconos */
+.pos .leftpane .control-buttons button i {
+    color: inherit !important;
+}
+
+/* Botón cliente */
+.pos .leftpane .control-buttons .set-partner {
+    border-left: 4px solid #185ADB !important;
+}
+
+/* Botón nota */
+.pos .leftpane .control-buttons .control-button {
+    border-left: 4px solid #55A6E8 !important;
+}
+
+/* Botón más opciones */
+.pos .leftpane .control-buttons .more-btn {
+    background-color: #185ADB !important;
+    color: #FFFFFF !important;
+    border-color: #185ADB !important;
+}
+
+/* Hover más opciones */
+.pos .leftpane .control-buttons .more-btn:hover {
+    background-color: #123B82 !important;
+    color: #FFFFFF !important;
+}
+
+
+/* ==========================================
+   SUPERCHARLY - BARRA SUPERIOR CORPORATIVA
+   ========================================== */
+
+/* Fondo azul de la barra */
+.pos .pos-topheader {
+    background: linear-gradient(90deg, #123B82, #185ADB) !important;
+    border-bottom: 3px solid #0D3478 !important;
+    min-height: 76px !important;
+    padding: 10px 16px !important;
+    gap: 12px !important;
+}
+
+/* Marca SuperCharly */
+.pos .pos-topheader::before {
+    content: " SuperCharly  |  POS";
+    display: block;
+    color: #FFFFFF !important;
+    font-size: 23px !important;
+    font-weight: 800 !important;
+    white-space: nowrap;
+    margin-right: auto;
+    letter-spacing: 0.2px;
+}
+
+/* Mantener los controles a la derecha */
+.pos .pos-topheader .pos-leftheader {
+    order: 1 !important;
+}
+
+.pos .pos-topheader .pos-rightheader {
+    order: 2 !important;
+}
+
+/* Botones de la barra */
+.pos .pos-topheader button {
+    border-radius: 9px !important;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 900px) {
+    .pos .pos-topheader::before {
+        font-size: 16px !important;
+    }
+
+    .pos .pos-topheader {
+        flex-wrap: wrap !important;
+    }
+}
+
+
+/* ==========================================
+   SUPERCHARLY - BOTONES DE BARRA SUPERIOR
+   ========================================== */
+
+/* Botones Caja y Pedidos */
+.pos .pos-topheader .navbar-menu button {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 9px !important;
+    font-weight: 700 !important;
+}
+
+/* Botón activo */
+.pos .pos-topheader .navbar-menu button.active {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+    border-color: #FFFFFF !important;
+}
+
+/* Hover */
+.pos .pos-topheader .navbar-menu button:hover {
+    background-color: #EAF2FF !important;
+    color: #123B82 !important;
+}
+
+/* Botones del lado derecho */
+.pos .pos-topheader .status-buttons > button {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 9px !important;
+}
+
+/* Iconos */
+.pos .pos-topheader .status-buttons > button i {
+    color: #FFFFFF !important;
+}
+
+/* Hover botones derechos */
+.pos .pos-topheader .status-buttons > button:hover {
+    background-color: #FFFFFF !important;
+    color: #185ADB !important;
+}
+
+.pos .pos-topheader .status-buttons > button:hover i {
+    color: #185ADB !important;
+}
+
+/* Buscador */
+.pos .pos-topheader .status-buttons .input-container {
+    background-color: #FFFFFF !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 9px !important;
+}
+
+/* Texto del buscador */
+.pos .pos-topheader .status-buttons input {
+    color: #263449 !important;
+}
+
+
+
+/* ==========================================
+   SUPERCHARLY - BARRA INFERIOR TRANSPARENTE
+   ========================================== */
+
+.pos::after {
+    content: "SuperCharly v1.0  |  ¡Calidad y buen precio siempre!";
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 30px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: rgba(234, 242, 255, 0.35) !important;
+    border-top: 1px solid rgba(24, 90, 219, 0.20) !important;
+
+    color: #123B82 !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+
+    z-index: 10 !important;
+    pointer-events: none !important;
+    backdrop-filter: blur(3px);
+}
+
+
+/* ==========================================
+   SUPERCHARLY - REDISEÑO COMPLETO DEL CARRITO
+   ========================================== */
+
+/* Panel derecho */
+.pos .leftpane {
+    background: #FFFFFF !important;
+    border-left: 1px solid #DCE4F0 !important;
+    padding-bottom: 8px !important;
+}
+
+/* Lista de productos */
+.pos .leftpane .order-container {
+    background: #F4F6FA !important;
+    padding: 12px !important;
+    gap: 8px !important;
+}
+
+/* Tarjeta de producto */
+.pos .leftpane .orderline {
+    background: #FFFFFF !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 13px !important;
+    margin: 0 0 8px 0 !important;
+    padding: 5px !important;
+    box-shadow: 0 3px 8px rgba(18, 59, 130, 0.07) !important;
+}
+
+/* Producto seleccionado */
+.pos .leftpane .orderline.selected {
+    background: #EAF2FF !important;
+    border: 2px solid #185ADB !important;
+}
+
+/* Nombre */
+.pos .leftpane .orderline .product-name {
+    color: #263449 !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+}
+
+/* Cantidad */
+.pos .leftpane .orderline .qty {
+    color: #185ADB !important;
+    font-weight: 900 !important;
+}
+
+/* Precio del producto */
+.pos .leftpane .orderline .product-price {
+    color: #123B82 !important;
+    font-size: 16px !important;
+    font-weight: 900 !important;
+}
+
+/* Información adicional */
+.pos .leftpane .orderline .info-list {
+    color: #8290A5 !important;
+    font-size: 11px !important;
+}
+
+/* ==========================================
+   RESUMEN Y TOTAL
+   ========================================== */
+
+.pos .leftpane .order-summary {
+    background: #EAF2FF !important;
+    border: 1px solid #C8D9FA !important;
+    border-radius: 13px !important;
+    margin: 5px 10px !important;
+    padding: 12px !important;
+}
+
+.pos .leftpane .order-summary .tax-info {
+    color: #65758B !important;
+    font-size: 13px !important;
+}
+
+.pos .leftpane .order-summary .total {
+    color: #123B82 !important;
+    font-size: 29px !important;
+    font-weight: 900 !important;
+}
+
+/* ==========================================
+   CONTROLES SUPERIORES DEL CARRITO
+   ========================================== */
+
+/* Subir los controles y reducir espacio */
+.pos .leftpane .pads {
+    padding: 0 10px 8px !important;
+    background: #FFFFFF !important;
+}
+
+/* Botones Cliente, Nota, Subir y Más */
+.pos .leftpane .control-buttons {
+    display: flex !important;
+    gap: 7px !important;
+    padding: 5px 0 9px !important;
+    margin-top: 0 !important;
+}
+
+.pos .leftpane .control-buttons button {
+    background: #EAF2FF !important;
+    color: #185ADB !important;
+    border: 1px solid #C8D9FA !important;
+    border-radius: 9px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    min-height: 42px !important;
+    padding: 5px 9px !important;
+}
+
+.pos .leftpane .control-buttons button:hover {
+    background: #DCEAFF !important;
+    border-color: #185ADB !important;
+}
+
+/* Botón más opciones */
+.pos .leftpane .control-buttons .more-btn {
+    background: #185ADB !important;
+    color: #FFFFFF !important;
+}
+
+/* ==========================================
+   TECLADO NUMÉRICO
+   ========================================== */
+
+.pos .leftpane .numpad {
+    gap: 4px !important;
+    background: #FFFFFF !important;
+    padding: 5px !important;
+    border-radius: 12px !important;
+}
+
+.pos .leftpane .numpad .numpad-button {
+    background: #F0F5FF !important;
+    color: #123B82 !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 8px !important;
+    min-height: 43px !important;
+    padding: 5px !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+}
+
+.pos .leftpane .numpad .numpad-button:hover {
+    background: #DCEAFF !important;
+    border-color: #185ADB !important;
+}
+
+/* Funciones especiales */
+.pos .leftpane .numpad .numpad-qty,
+.pos .leftpane .numpad .numpad-discount,
+.pos .leftpane .numpad .numpad-price {
+    background: #DCEAFF !important;
+    color: #185ADB !important;
+    font-size: 14px !important;
+}
+
+/* ==========================================
+   BOTÓN DE PAGO
+   ========================================== */
+
+.pos .leftpane .actionpad {
+    margin-top: 5px !important;
+    padding-bottom: 25px !important;
+}
+
+.pos .leftpane .pay-order-button {
+    background: #185ADB !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 11px !important;
+    min-height: 53px !important;
+    font-size: 19px !important;
+    font-weight: 900 !important;
+    box-shadow: 0 4px 10px rgba(24, 90, 219, 0.20) !important;
+}
+
+.pos .leftpane .pay-order-button:hover {
+    background: #123B82 !important;
+    transform: translateY(-1px);
+}
+
+/* ==========================================
+   COMPACTAR ESPACIOS VERTICALES
+   ========================================== */
+
+.pos .leftpane .subpads {
+    gap: 5px !important;
+}
+
+
+/* =====================================
+   SUPERCHARLY - CATALOGO DE PRODUCTOS
+   ===================================== */
+
+/* BUSCADOR: un poco más abajo */
+.pos .rightpane .sc-catalog-search {
+    margin-top: 22px !important;
+    margin-bottom: 14px !important;
+    padding: 10px 18px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.pos .rightpane .sc-catalog-search .input-container {
+    min-height: 50px !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 12px !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 2px 6px rgba(18, 59, 130, 0.06);
+}
+
+/* CATEGORÍAS: formato de botones */
+.pos .rightpane .category-list {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    padding: 12px 18px !important;
+    background: #F4F6FA !important;
+}
+
+.pos .rightpane .category-list > * {
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 10px !important;
+    background: #FFFFFF !important;
+    color: #263449 !important;
+    padding: 10px 16px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease;
+}
+
+.pos .rightpane .category-list > *.active,
+.pos .rightpane .category-list > *.selected {
+    background: #185ADB !important;
+    color: #FFFFFF !important;
+    border-color: #185ADB !important;
+}
+
+/* TARJETAS DE PRODUCTOS */
+.pos .rightpane article.product {
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 13px !important;
+    background: #FFFFFF !important;
+    overflow: hidden;
+    box-shadow: 0 2px 7px rgba(18, 59, 130, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pos .rightpane article.product:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(18, 59, 130, 0.12);
+}
+
+/* NOMBRE DEL PRODUCTO */
+.pos .rightpane .product-name {
+    color: #263449 !important;
+    font-weight: 600 !important;
+}
+
+/* PRECIO DEL PRODUCTO */
+.pos .rightpane article.product .product-price {
+    color: #185ADB !important;
+    font-size: 17px !important;
+    font-weight: 800 !important;
+}
+
+/* PRECIO EN TARJETAS DE PRODUCTOS */
+.pos .rightpane .sc-product-price {
+    color: #185ADB !important;
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    margin-top: 7px !important;
+    padding: 3px 0 !important;
+    text-align: left !important;
+}
+
+/* ORGANIZACIÓN DEL CONTENIDO DE LAS TARJETAS */
+.pos .rightpane article.product .product-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 5px !important;
+}
+
+/* NOMBRE DEL PRODUCTO */
+.pos .rightpane article.product .product-name {
+    display: block !important;
+    width: 100% !important;
+    color: #263449 !important;
+    font-weight: 600 !important;
+}
+
+/* PRECIO DEBAJO DEL NOMBRE */
+.pos .rightpane article.product .sc-product-price {
+    display: block !important;
+    width: 100% !important;
+    color: #185ADB !important;
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    text-align: left !important;
+    margin: 0 !important;
+    padding: 0 0 4px 0 !important;
+}
+
+
+/* FILA DEL BUSCADOR Y BOTON QR */
+.pos .rightpane .sc-search-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    padding: 10px 18px !important;
+    box-sizing: border-box !important;
+}
+
+/* BUSCADOR */
+.pos .rightpane .sc-search-row .sc-catalog-search {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* BOTON QR */
+.pos .rightpane .sc-search-row > button {
+    flex: 0 0 52px !important;
+    width: 52px !important;
+    height: 50px !important;
+    border-radius: 12px !important;
+    background: #185ADB !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* MOVER CAJA Y PEDIDOS AL FINAL DEL NAVBAR */
+.pos .navbar-menu {
+    margin-left: auto !important;
+    margin-right: 10px !important;
+    align-self: center !important;
+    flex-shrink: 0 !important;
+}
+
+/* NAVBAR: PREPARAR POSICIONAMIENTO */
+.pos .pos-topheader {
+    position: relative !important;
+}
+
+/* CAJA Y PEDIDOS AL EXTREMO DERECHO */
+.pos .pos-topheader .navbar-menu {
+    position: absolute !important;
+    right: 115px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 10 !important;
+    margin: 0 !important;
+    display: flex !important;
+    gap: 6px !important;
+}
+
+/* RESERVAR ESPACIO PARA LOS BOTONES */
+.pos .pos-topheader .pos-leftheader {
+    padding-right: 230px !important;
+}
+
+/* BOTON NUEVA VENTA */
+.pos .pos-topheader .list-plus-btn {
+    min-width: 125px !important;
+    padding: 8px 14px !important;
+    background: #185ADB !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+
+/* OCULTAR ICONO + */
+.pos .pos-topheader .list-plus-btn i {
+    display: none !important;
+}
+
+/* AGREGAR TEXTO */
+.pos .pos-topheader .list-plus-btn::after {
+    content: "Nueva venta";
+}
+
+/* CAMBIAR PEDIDOS POR VENTAS ABIERTAS */
+.pos .navbar-menu .orders-button {
+    min-width: 145px !important;
+}
+
+.pos .navbar-menu .orders-button span {
+    font-size: 0 !important;
+}
+
+.pos .navbar-menu .orders-button span::after {
+    content: "Ventas abiertas";
+    font-size: 14px !important;
+}
+
+/* =====================================
+   LISTADO DE VENTAS ABIERTAS
+===================================== */
+
+/* CONTENEDOR */
+.pos .orders {
+    background: #F4F6FA !important;
+    padding: 12px !important;
+    border-radius: 12px !important;
+}
+
+/* TABLA */
+.pos .orders .table {
+    border-collapse: separate !important;
+    border-spacing: 0 9px !important;
+    margin-bottom: 0 !important;
+    background: transparent !important;
+}
+
+/* FILAS */
+.pos .orders .order-row {
+    background: #FFFFFF !important;
+    box-shadow: 0 2px 7px rgba(18, 59, 130, 0.05);
+    transition: all 0.2s ease !important;
+}
+
+/* CELDAS */
+.pos .orders .order-row td {
+    background: #FFFFFF !important;
+    color: #263449 !important;
+    padding: 15px 12px !important;
+    border-top: 1px solid #DCE4F0 !important;
+    border-bottom: 1px solid #DCE4F0 !important;
+    vertical-align: middle !important;
+}
+
+/* PRIMERA CELDA */
+.pos .orders .order-row td:first-child {
+    border-left: 1px solid #DCE4F0 !important;
+    border-radius: 12px 0 0 12px !important;
+}
+
+/* ULTIMA CELDA */
+.pos .orders .order-row td:last-child {
+    border-right: 1px solid #DCE4F0 !important;
+    border-radius: 0 12px 12px 0 !important;
+}
+
+/* VENTA SELECCIONADA */
+.pos .orders .order-row.active td {
+    background: #EAF2FF !important;
+    border-top-color: #B9D0FF !important;
+    border-bottom-color: #B9D0FF !important;
+}
+
+/* HOVER */
+.pos .orders .order-row:hover td {
+    background: #F5F8FF !important;
+}
+
+/* NUMERO DE VENTA */
+.pos .orders .order-name .fw-bolder {
+    color: #185ADB !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+}
+
+/* FECHA Y HORA */
+.pos .orders .small {
+    color: #8290A3 !important;
+    font-size: 12px !important;
+}
+
+/* MONTO */
+.pos .orders .order-row td .fw-bolder {
+    font-weight: 700 !important;
+}
+
+/* ESTADO */
+.pos .orders .order-row .badge {
+    background: #FFF4D6 !important;
+    color: #946200 !important;
+    border: 1px solid #F5D98A !important;
+    border-radius: 7px !important;
+    padding: 7px 11px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+/* BOTON INFORMACION */
+.pos .orders .info-column button {
+    color: #185ADB !important;
+    border-radius: 8px !important;
+    padding: 7px !important;
+}
+
+/* BOTON ELIMINAR */
+.pos .orders .delete-column button {
+    color: #B42318 !important;
+    border-radius: 8px !important;
+    padding: 7px !important;
+}
+
+/* EFECTOS DE BOTONES */
+.pos .orders .info-column button:hover {
+    background: #EAF2FF !important;
+}
+
+.pos .orders .delete-column button:hover {
+    background: #FEECEB !important;
+}
+
+/* =====================================
+   BOTON CARGAR ORDEN
+===================================== */
+
+.pos .pads .load-order-button {
+    width: 100% !important;
+    min-height: 58px !important;
+    padding: 14px 20px !important;
+    border: none !important;
+    border-radius: 12px !important;
+    background: #185ADB !important;
+    color: #FFFFFF !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.2px !important;
+    box-shadow: 0 4px 10px rgba(24, 90, 219, 0.18) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* TEXTO */
+.pos .pads .load-order-button span {
+    font-weight: 700 !important;
+}
+
+/* HOVER */
+.pos .pads .load-order-button:hover {
+    background: #123B82 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(24, 90, 219, 0.25) !important;
+}
+
+/* AL PRESIONAR */
+.pos .pads .load-order-button:active {
+    transform: scale(0.98);
+}
+
+/* ESTADO DESHABILITADO */
+.pos .pads .load-order-button:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* =====================================
+   MODAL DE CONFIRMACION SUPERCHARLY
+===================================== */
+
+/* CONTENEDOR */
+.pos .modal-content.o_confirmation_dialog {
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 15px 45px rgba(18, 59, 130, 0.18) !important;
+}
+
+/* CABECERA */
+.pos .o_confirmation_dialog .modal-header {
+    padding: 22px 24px !important;
+    background: #F4F6FA !important;
+    border-bottom: 1px solid #DCE4F0 !important;
+}
+
+/* TITULO */
+.pos .o_confirmation_dialog .modal-title {
+    color: #263449 !important;
+    font-size: 21px !important;
+    font-weight: 800 !important;
+}
+
+/* CERRAR */
+.pos .o_confirmation_dialog .btn-close {
+    opacity: 0.65 !important;
+}
+
+/* CUERPO */
+.pos .o_confirmation_dialog .modal-body {
+    padding: 25px 24px !important;
+    color: #52647D !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    background: #FFFFFF !important;
+}
+
+/* PIE */
+.pos .o_confirmation_dialog .modal-footer {
+    padding: 16px 24px 22px !important;
+    border-top: 1px solid #E8EDF5 !important;
+    background: #FFFFFF !important;
+    gap: 10px !important;
+}
+
+/* BOTONES GENERALES */
+.pos .o_confirmation_dialog .modal-footer .btn {
+    min-width: 125px !important;
+    padding: 11px 22px !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease !important;
+}
+
+/* ACEPTAR: ELIMINAR */
+.pos .o_confirmation_dialog .modal-footer .btn-primary {
+    background: #B42318 !important;
+    border: 1px solid #B42318 !important;
+    color: #FFFFFF !important;
+}
+
+/* HOVER ACEPTAR */
+.pos .o_confirmation_dialog .modal-footer .btn-primary:hover {
+    background: #8F1D14 !important;
+    border-color: #8F1D14 !important;
+}
+
+/* DESCARTAR */
+.pos .o_confirmation_dialog .modal-footer .btn-secondary {
+    background: #FFFFFF !important;
+    border: 1px solid #DCE4F0 !important;
+    color: #263449 !important;
+}
+
+/* HOVER DESCARTAR */
+.pos .o_confirmation_dialog .modal-footer .btn-secondary:hover {
+    background: #EAF2FF !important;
+    border-color: #185ADB !important;
+    color: #185ADB !important;
+}
+
+/* =====================================
+   MENU PRINCIPAL SUPERCHARLY
+===================================== */
+
+/* CUERPO DEL MENU */
+.pos .o_pos_burger_menu_buttons {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    padding: 8px 4px !important;
+}
+
+/* BOTONES GENERALES */
+.pos .o_pos_burger_menu_buttons button {
+    min-height: 105px !important;
+    padding: 16px 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+
+    background: #FFFFFF !important;
+    color: #263449 !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 14px !important;
+
+    font-size: 14px !important;
+    font-weight: 100 !important;
+
+    box-shadow: 0 2px 7px rgba(18, 59, 130, 0.05) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* ICONOS */
+.pos .o_pos_burger_menu_buttons button i {
+    font-size: 25px !important;
+    color: #185ADB !important;
+    opacity: 1 !important;
+}
+
+/* EFECTO HOVER */
+.pos .o_pos_burger_menu_buttons button:hover {
+    background: #EAF2FF !important;
+    border-color: #185ADB !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(24, 90, 219, 0.10) !important;
+}
+
+/* OPCION CERRAR CAJA */
+.pos .o_pos_burger_menu_buttons button.btn-danger {
+    background: #FFF5F4 !important;
+    color: #B42318 !important;
+    border-color: #F2C7C3 !important;
+}
+
+/* ICONO CERRAR CAJA */
+.pos .o_pos_burger_menu_buttons button.btn-danger i {
+    color: #B42318 !important;
+}
+
+/* HOVER CERRAR CAJA */
+.pos .o_pos_burger_menu_buttons button.btn-danger:hover {
+    background: #FEECEB !important;
+    border-color: #B42318 !important;
+}
+
+/* BOTON LNA */
+.pos .modal-body > div:first-child > button.btn-outline-info {
+    background: #EAF2FF !important;
+    color: #185ADB !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+}
+
+/* BOTON CERRAR MENU */
+.pos .modal-body > div:first-child .btn-close {
+    border-radius: 10px !important;
+    background-color: #F4F6FA !important;
+}
+
+
+/* =========================================
+   SUPERCHARLY - NUEVO PRODUCTO
+========================================= */
+
+/* MODAL */
+.pos .modal-content:has(.o_act_window) {
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 15px 45px rgba(18, 59, 130, 0.16) !important;
+}
+
+/* CABECERA */
+.pos .modal-content:has(.o_act_window) .modal-header {
+    background: #F4F6FA !important;
+    padding: 20px 25px !important;
+    border-bottom: 1px solid #DCE4F0 !important;
+}
+
+/* TITULO */
+.pos .modal-content:has(.o_act_window) .modal-title {
+    color: #123B82 !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+}
+
+/* CUERPO */
+.pos .modal-content:has(.o_act_window) .modal-body {
+    background: #FFFFFF !important;
+    padding: 24px !important;
+}
+
+/* FORMULARIO */
+.pos .modal-content:has(.o_act_window) .o_form_sheet {
+    border: none !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+    background: #FFFFFF !important;
+}
+
+/* ETIQUETAS */
+.pos .modal-content:has(.o_act_window) .o_form_label {
+    color: #263449 !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+}
+
+/* CAMPOS */
+.pos .modal-content:has(.o_act_window) .o_input {
+    min-height: 40px !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 8px !important;
+    background: #F9FBFF !important;
+    padding: 8px 11px !important;
+    color: #263449 !important;
+    transition: all 0.2s ease !important;
+}
+
+/* CAMPOS AL SELECCIONAR */
+.pos .modal-content:has(.o_act_window) .o_input:focus {
+    border-color: #185ADB !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 0 0 3px rgba(24, 90, 219, 0.10) !important;
+    outline: none !important;
+}
+
+/* SELECTORES */
+.pos .modal-content:has(.o_act_window) .o_select_menu {
+    border-radius: 8px !important;
+}
+
+/* ETIQUETAS DE IMPUESTOS Y CATEGORIAS */
+.pos .modal-content:has(.o_act_window) .o_tag {
+    background: #EAF2FF !important;
+    color: #185ADB !important;
+    border: 1px solid #DCE4F0 !important;
+    border-radius: 7px !important;
+    font-weight: 600 !important;
+}
+
+/* IMAGEN */
+.pos .modal-content:has(.o_act_window) .oe_avatar img {
+    border: 2px solid #DCE4F0 !important;
+    border-radius: 14px !important;
+    background: #F4F6FA !important;
+    object-fit: cover !important;
+}
+
+/* BOTON EDITAR IMAGEN */
+.pos .modal-content:has(.o_act_window) .o_select_file_button {
+    background: #185ADB !important;
+    color: #FFFFFF !important;
+    border: none !important;
+}
+
+/* PIE DEL MODAL */
+.pos .modal-content:has(.o_act_window) .modal-footer {
+    background: #F4F6FA !important;
+    border-top: 1px solid #DCE4F0 !important;
+    padding: 16px 24px !important;
+    gap: 10px !important;
+}
+
+/* BOTONES GENERALES */
+.pos .modal-content:has(.o_act_window) .modal-footer .btn {
+    min-height: 43px !important;
+    padding: 10px 18px !important;
+    border-radius: 9px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease !important;
+}
+
+/* AÑADIR Y NUEVO */
+.pos .modal-content:has(.o_act_window) .o_form_button_save_new {
+    background: #185ADB !important;
+    color: #FFFFFF !important;
+    border: 1px solid #185ADB !important;
+}
+
+/* AÑADIR Y CERRAR */
+.pos .modal-content:has(.o_act_window) .o_form_button_save {
+    background: #FFFFFF !important;
+    color: #185ADB !important;
+    border: 1px solid #185ADB !important;
+}
+
+/* DESCARTAR */
+.pos .modal-content:has(.o_act_window) .o_form_button_cancel {
+    background: #FFFFFF !important;
+    color: #52647D !important;
+    border: 1px solid #DCE4F0 !important;
+}
+
+/* HOVER */
+.pos .modal-content:has(.o_act_window) .modal-footer .btn:hover {
+    filter: brightness(0.96);
+    transform: translateY(-1px);
+}
